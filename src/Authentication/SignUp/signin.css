@@ -1,0 +1,32 @@
+.sign-in {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#367636+0,2c622c+17,234d23+33,003c00+57,002600+83,001000+100 */
+  background: rgb(54, 118, 54); /* Old browsers */
+  background: -moz-linear-gradient(
+    top,
+    rgba(54, 118, 54, 1) 0%,
+    rgba(44, 98, 44, 1) 17%,
+    rgba(35, 77, 35, 1) 33%,
+    rgba(0, 60, 0, 1) 57%,
+    rgba(0, 38, 0, 1) 83%,
+    rgba(0, 16, 0, 1) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    rgba(54, 118, 54, 1) 0%,
+    rgba(44, 98, 44, 1) 17%,
+    rgba(35, 77, 35, 1) 33%,
+    rgba(0, 60, 0, 1) 57%,
+    rgba(0, 38, 0, 1) 83%,
+    rgba(0, 16, 0, 1) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    rgba(54, 118, 54, 1) 0%,
+    rgba(44, 98, 44, 1) 17%,
+    rgba(35, 77, 35, 1) 33%,
+    rgba(0, 60, 0, 1) 57%,
+    rgba(0, 38, 0, 1) 83%,
+    rgba(0, 16, 0, 1) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#367636', endColorstr='#001000',GradientType=0 ); /* IE6-9 */
+}

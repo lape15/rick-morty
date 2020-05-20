@@ -1,0 +1,76 @@
+.active {
+  border-bottom: 3px solid #2f9331;
+}
+.big {
+  /* border: 2px solid red; */
+  transition: transform 3s ease-in-out;
+}
+
+.big:hover {
+  transform: scale(1.1);
+}
+.box h3 {
+  animation: myBox 4s forwards;
+}
+.box span {
+  animation: content 4s forwards;
+}
+.box .btn-box .btn {
+  /* animation: content 4s forwards; */
+  border: 1px solid #29822b;
+  animation: btn 4s 3s forwards;
+  outline: 0;
+}
+@keyframes myBox {
+  0% {
+    /* border: 2px solid red; */
+    /* left: 0px; */
+    top: -50px;
+  }
+  100% {
+    top: 100px;
+  }
+}
+
+@keyframes content {
+  0% {
+    left: -1000px;
+  }
+  100% {
+    left: 0;
+    top: 70px;
+  }
+}
+
+@keyframes btn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.dance {
+  background-image: url('./images/White.gif');
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: auto 75%;
+}
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: #84c784;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-thumb {
+  background-color: #84c784;
+  border-radius: 6px;
+  box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.2);
+}
+@media (min-width: 300px) and (max-width: 768px) {
+  .dance {
+    /* border: 2px solid red; */
+    background-image: url('./images/Rick.png');
+    background-size: 300px 300px;
+    background-position: center;
+  }
+}
