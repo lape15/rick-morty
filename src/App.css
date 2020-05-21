@@ -15,7 +15,7 @@
 .box span {
   animation: content 4s forwards;
 }
-.box .btn-box .btn {
+.box .btn-box .btns {
   /* animation: content 4s forwards; */
   border: 1px solid #29822b;
   animation: btn 4s 3s forwards;

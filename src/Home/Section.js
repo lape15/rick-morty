@@ -1,5 +1,6 @@
 import React from 'react'
 import Rick from '../images/Rick.png'
+import { Link } from 'react-router-dom'
 const Section = () => {
   return (
     <div className="lg:p-3 p-1">
@@ -22,8 +23,8 @@ const Section = () => {
             adventures.
           </span>
           <div className="btn-box mt-6 ">
-            <button className="text-green-900 btn mt-16 opacity-0 p-4 font-bold tracking-wide rounded-full outline-none ">
-              Explore our world
+            <button className="text-green-900 btns mt-16 opacity-0 p-4 font-bold tracking-wide rounded-full outline-none ">
+              <Link to="/signup"> Explore our world </Link>
             </button>
           </div>
         </div>

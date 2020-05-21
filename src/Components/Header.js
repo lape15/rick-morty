@@ -22,13 +22,13 @@ const Header = () => {
               <NavLink to={'/'}>Register</NavLink>
             </li>
             <li className="m-2 p-2 text-green-900 cursor-pointer">
-              <NavLink to={'/signup'}>Signup</NavLink>
+              <NavLink to={'/signin'}>Signin</NavLink>
             </li>
           </ul>
         </div>
         <NavLink
           className="lg:hidden m-2 p-2 text-green-900 cursor-pointer"
-          to="/"
+          to="/signin"
         >
           Signin
         </NavLink>
