@@ -36,12 +36,15 @@ const SignUp = () => {
     valid = signUp.email.trim() !== '' && valid
     valid = signUp.password.trim() !== '' && valid
     valid = signUp.confirmPassword.trim() !== '' && valid
-    checkValidity()
     return valid
   }
   function handleSubmit(event) {
     event.preventDefault()
-    console.log(signUp)
+    const realValid = checkValidity()
+    if (realValid) {
+      alert('It works')
+      setPasswordError('')
+    }
   }
   return (
     <div className="lg:flex block pt-6 bg-white shadow-lg lg:w-screen  max-w-3xl m-auto text-black auth-form">
@@ -105,13 +108,13 @@ const SignUp = () => {
           />
           <div className="mt-3">
             <button
-              className="text-black p-2 border rounded-lg m-4 w-auto btn"
+              className="text-black p-2 border rounded-lg m-4 w-auto btn outline-none"
               // disabled={!signUp.isValid}
             >
               Signup with Google
             </button>
             <button
-              className="text-black p-2 border rounded-lg m-4 w-32 btn"
+              className="text-black p-2 border rounded-lg m-4 w-32 btn outline-none"
               disabled={!signUp.isValid}
             >
               Sign up

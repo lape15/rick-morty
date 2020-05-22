@@ -19,18 +19,18 @@ const Header = () => {
               <NavLink to={'/'}>About</NavLink>
             </li>
             <li className="m-2 p-2 text-green-900 cursor-pointer">
-              <NavLink to={'/'}>Register</NavLink>
+              <NavLink to={'/auth/signup'}>Register</NavLink>
             </li>
             <li className="m-2 p-2 text-green-900 cursor-pointer">
-              <NavLink to={'/signin'}>Signin</NavLink>
+              <NavLink to={'/auth'}>Login</NavLink>
             </li>
           </ul>
         </div>
         <NavLink
           className="lg:hidden m-2 p-2 text-green-900 cursor-pointer"
-          to="/signin"
+          to="/auth"
         >
-          Signin
+          Login
         </NavLink>
       </div>
     </header>

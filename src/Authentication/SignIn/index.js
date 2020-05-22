@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import Ricky from '../../images/FuckU.jpg'
-import './signin.css'
-const SignUp = () => {
+import '../SignUp/signin.css'
+const Login = (props) => {
+  console.log(props)
   const [login, setLogin] = useState({
-    firstName: '',
-    lastName: '',
     email: '',
+    password: '',
     isValid: false,
   })
+
   function handleChange(e) {
     setLogin({
       ...login,
@@ -18,17 +19,18 @@ const SignUp = () => {
   }
   const validity = () => {
     let valid = true
-    valid = login.firstName.trim() !== '' && valid
-    valid = login.lastName.trim() !== '' && valid
+
     valid = login.email.trim() !== '' && valid
+    valid = login.password.trim() !== '' && valid
+
     return valid
   }
   function handleSubmit(event) {
     event.preventDefault()
-    console.log(login)
+    alert('Welcome')
   }
   return (
-    <div className="lg:flex block pt-6 bg-white shadow-lg lg:w-screen  max-w-3xl m-auto text-black auth-form">
+    <div className="lg:flex block pt-6 bg-white shadow-lg lg:w-screen  max-w-3xl m-auto text-black border border-solid border-red-400">
       <div className="lg:flex-initial text-center">
         <img src={Ricky} alt="Ricky" className="h-64" />{' '}
       </div>
@@ -38,31 +40,10 @@ const SignUp = () => {
           onSubmit={handleSubmit}
         >
           <h1 className="lg:mt-3 -mt-2 lg:text-3xl text-xl font-bold text-gray-600">
-            Welcome, Create your account
+            Login
           </h1>
           <span className="text-gray-500 text-xl">Enter your details</span>
-          <label className="block mt-2 mb-2 mr-2 text-gray-700 p-3">
-            First name
-          </label>
-          <input
-            type="text"
-            placeholder="Last name"
-            name="firstName"
-            value={login.firstName}
-            className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-3/4 appearance-none leading-normal"
-            onChange={handleChange}
-          />
-          <label className="block mt-2 mb-2 mr-2 text-gray-700 p-3">
-            Last name
-          </label>
-          <input
-            type="text"
-            placeholder="Last name"
-            name="lastName"
-            value={login.lastName}
-            className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-3/4 appearance-none leading-normal"
-            onChange={handleChange}
-          />
+
           <label className="block mt-2 mb-2 mr-2 text-gray-700 p-3">
             Email
           </label>
@@ -74,18 +55,30 @@ const SignUp = () => {
             placeholder="jane@example.com"
             onChange={handleChange}
           />
+          <label className="block mt-2 mb-2 mr-2 text-gray-700 p-3">
+            Password
+          </label>
+          <input
+            type="text"
+            placeholder="Password"
+            name="password"
+            value={login.password}
+            className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-3/4 appearance-none leading-normal"
+            onChange={handleChange}
+          />
+
           <div className="mt-3">
             <button
-              className="text-black p-2 border rounded-lg m-4 w-auto btn"
+              className="text-black p-2 border rounded-lg m-4 w-auto btn outline-none"
               // disabled={!login.isValid}
             >
-              Signup with Google
+              Login with Google
             </button>
             <button
-              className="text-black p-2 border rounded-lg m-4 w-32 btn"
+              className="text-black p-2 border rounded-lg m-4 w-32 btn outline-none"
               disabled={!login.isValid}
             >
-              Sign up
+              Login
             </button>
           </div>
         </form>
@@ -93,4 +86,4 @@ const SignUp = () => {
     </div>
   )
 }
-export default SignUp
+export default Login
