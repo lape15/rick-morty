@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import Ricky from '../../images/FuckU.jpg'
+import Ricky from '../../images/running.png'
 import '../SignUp/signin.css'
+import { signInWithGoogle } from '../../firebase/firebase.utils'
 const Login = (props) => {
   console.log(props)
   const [login, setLogin] = useState({
@@ -27,10 +28,10 @@ const Login = (props) => {
   }
   function handleSubmit(event) {
     event.preventDefault()
-    alert('Welcome')
+    // alert('Welcome')
   }
   return (
-    <div className="lg:flex block pt-6 bg-white shadow-lg lg:w-screen  max-w-3xl m-auto text-black border border-solid border-red-400">
+    <div className="lg:flex block pt-6 bg-white shadow-lg lg:w-screen  max-w-3xl m-auto text-black ">
       <div className="lg:flex-initial text-center">
         <img src={Ricky} alt="Ricky" className="h-64" />{' '}
       </div>
@@ -48,7 +49,7 @@ const Login = (props) => {
             Email
           </label>
           <input
-            className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-3/4 appearance-none leading-normal"
+            className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-3/4 appearance-none leading-normal ml-8 lg:ml-0"
             type="email"
             name="email"
             value={login.email}
@@ -63,14 +64,14 @@ const Login = (props) => {
             placeholder="Password"
             name="password"
             value={login.password}
-            className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-3/4 appearance-none leading-normal"
+            className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-3/4 appearance-none leading-normal ml-8 lg:ml-0"
             onChange={handleChange}
           />
 
           <div className="mt-3">
             <button
               className="text-black p-2 border rounded-lg m-4 w-auto btn outline-none"
-              // disabled={!login.isValid}
+              onClick={signInWithGoogle}
             >
               Login with Google
             </button>

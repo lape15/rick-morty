@@ -47,9 +47,13 @@ const SignUp = () => {
     }
   }
   return (
-    <div className="lg:flex block pt-6 bg-white shadow-lg lg:w-screen  max-w-3xl m-auto text-black auth-form">
-      <div className="lg:flex-initial text-center">
-        <img src={Ricky} alt="Ricky" className="h-64" />{' '}
+    <div className="lg:flex block pt-6 bg-white shadow-lg lg:w-screen  max-w-3xl m-auto text-black auth-form ">
+      <div className="lg:flex-initial text-center border rounded-full border-red-200">
+        <img
+          src={Ricky}
+          alt="Ricky"
+          className="h-64 rounded-full transform -translate-x-6"
+        />{' '}
       </div>
       <div className="lg:flex-initial lg:w-9/12 h-auto">
         <form
@@ -68,7 +72,7 @@ const SignUp = () => {
             placeholder="Display name"
             name="name"
             value={signUp.name}
-            className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-3/4 appearance-none leading-normal"
+            className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-3/4 appearance-none leading-normal ml-8 lg:ml-0"
             onChange={handleChange}
           />
 
@@ -76,7 +80,7 @@ const SignUp = () => {
             Email
           </label>
           <input
-            className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-3/4 appearance-none leading-normal"
+            className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-3/4 appearance-none leading-normal ml-8 lg:ml-0"
             type="email"
             name="email"
             value={signUp.email}
@@ -91,7 +95,7 @@ const SignUp = () => {
             placeholder="Password"
             name="password"
             value={signUp.password}
-            className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-3/4 appearance-none leading-normal"
+            className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-3/4 appearance-none leading-normal ml-8 lg:ml-0"
             onChange={handleChange}
           />
           <label className="block mt-2 mb-2 mr-2 text-gray-700 p-3">
@@ -103,7 +107,7 @@ const SignUp = () => {
             placeholder="Confirm Password"
             name="confirmPassword"
             value={signUp.confirmPassword}
-            className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-3/4 appearance-none leading-normal"
+            className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-3/4 appearance-none leading-normal ml-8 lg:ml-0"
             onChange={handleChange}
           />
           <div className="mt-3">

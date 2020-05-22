@@ -1,7 +1,9 @@
 import React from 'react'
 import Text from '../images/text.png'
 import { NavLink } from 'react-router-dom'
-const Header = () => {
+import { auth } from '../firebase/firebase.utils'
+const Header = (props) => {
+  console.log(props)
   return (
     <header className="bg-transparent">
       <div className="container mx-auto px-6 py-2 flex justify-between items-center">
@@ -21,9 +23,20 @@ const Header = () => {
             <li className="m-2 p-2 text-green-900 cursor-pointer">
               <NavLink to={'/auth/signup'}>Register</NavLink>
             </li>
-            <li className="m-2 p-2 text-green-900 cursor-pointer">
-              <NavLink to={'/auth'}>Login</NavLink>
-            </li>
+            {props.user ? (
+              <li
+                className="m-2 p-2 text-green-900 cursor-pointer"
+                onClick={() => {
+                  auth.signOut()
+                }}
+              >
+                SignOut
+              </li>
+            ) : props.user === null ? (
+              <li className="m-2 p-2 text-green-900 cursor-pointer">
+                <NavLink to={'/auth'}>Login</NavLink>
+              </li>
+            ) : null}
           </ul>
         </div>
         <NavLink
