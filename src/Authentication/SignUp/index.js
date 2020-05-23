@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
-import Ricky from '../../images/FuckU.jpg'
-import './signin.css'
+import React, { useState } from 'react';
+import Ricky from '../../images/FuckU.jpg';
+import './signin.css';
+import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 const SignUp = () => {
   const [signUp, setsignUp] = useState({
     name: '',
@@ -8,44 +9,57 @@ const SignUp = () => {
     password: '',
     confirmPassword: '',
     isValid: false,
-  })
-  const [passwordError, setPasswordError] = useState('')
+  });
+  const [passwordError, setPasswordError] = useState('');
   const checkValidity = () => {
-    let passwordError = ''
+    let passwordError = '';
     if (signUp.password !== signUp.confirmPassword) {
-      passwordError = 'Passwords do not match'
+      passwordError = 'Passwords do not match';
     }
     if (passwordError) {
-      setPasswordError(passwordError)
-      return false
+      setPasswordError(passwordError);
+      return false;
     }
-    return true
-  }
+    return true;
+  };
   function handleChange(e) {
     setsignUp({
       ...signUp,
       [e.target.name]: e.target.value,
       isValid: validity(),
-    })
-    console.log(signUp)
+    });
+    console.log(signUp);
   }
   const validity = () => {
-    let valid = true
+    let valid = true;
 
-    valid = signUp.name.trim() !== '' && valid
-    valid = signUp.email.trim() !== '' && valid
-    valid = signUp.password.trim() !== '' && valid
-    valid = signUp.confirmPassword.trim() !== '' && valid
-    return valid
-  }
-  function handleSubmit(event) {
-    event.preventDefault()
-    const realValid = checkValidity()
-    if (realValid) {
-      alert('It works')
-      setPasswordError('')
+    valid = signUp.name.trim() !== '' && valid;
+    valid = signUp.email.trim() !== '' && valid;
+    valid = signUp.password.trim() !== '' && valid;
+    valid = signUp.confirmPassword.trim() !== '' && valid;
+    return valid;
+  };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const realValid = checkValidity();
+    if (!realValid) return;
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(
+        signUp.email,
+        signUp.password
+      );
+      await createUserProfileDocument(user, signUp.displayName);
+      setsignUp({
+        name: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        isValid: false,
+      });
+    } catch (error) {
+      console.log('What is this?', error);
     }
-  }
+  };
   return (
     <div className="lg:flex block pt-6 bg-white shadow-lg lg:w-screen  max-w-3xl m-auto text-black auth-form ">
       <div className="lg:flex-initial text-center border rounded-full border-red-200">
@@ -127,6 +141,6 @@ const SignUp = () => {
         </form>
       </div>
     </div>
-  )
-}
-export default SignUp
+  );
+};
+export default SignUp;

@@ -1,9 +1,9 @@
-import React from 'react'
-import Text from '../images/text.png'
-import { NavLink } from 'react-router-dom'
-import { auth } from '../firebase/firebase.utils'
+import React from 'react';
+import Text from '../images/text.png';
+import { NavLink } from 'react-router-dom';
+import { auth } from '../firebase/firebase.utils';
 const Header = (props) => {
-  console.log(props)
+  // console.log(props.user);
   return (
     <header className="bg-transparent">
       <div className="container mx-auto px-6 py-2 flex justify-between items-center">
@@ -27,7 +27,7 @@ const Header = (props) => {
               <li
                 className="m-2 p-2 text-green-900 cursor-pointer"
                 onClick={() => {
-                  auth.signOut()
+                  auth.signOut();
                 }}
               >
                 SignOut
@@ -47,7 +47,7 @@ const Header = (props) => {
         </NavLink>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
