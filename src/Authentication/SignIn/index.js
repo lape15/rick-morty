@@ -1,33 +1,34 @@
-import React, { useState } from 'react'
-import Ricky from '../../images/running.png'
-import '../SignUp/signin.css'
-import { signInWithGoogle } from '../../firebase/firebase.utils'
+import React, { useState } from 'react';
+import Ricky from '../../images/running.png';
+import '../SignUp/signin.css';
+import { signInWithGoogle } from '../../firebase/firebase.utils';
+import { Redirect } from 'react-router-dom';
 const Login = (props) => {
-  console.log(props)
+  console.log(props);
   const [login, setLogin] = useState({
     email: '',
     password: '',
     isValid: false,
-  })
+  });
 
   function handleChange(e) {
     setLogin({
       ...login,
       [e.target.name]: e.target.value,
       isValid: validity(),
-    })
-    console.log(login)
+    });
+    console.log(login);
   }
   const validity = () => {
-    let valid = true
+    let valid = true;
 
-    valid = login.email.trim() !== '' && valid
-    valid = login.password.trim() !== '' && valid
+    valid = login.email.trim() !== '' && valid;
+    valid = login.password.trim() !== '' && valid;
 
-    return valid
-  }
+    return valid;
+  };
   function handleSubmit(event) {
-    event.preventDefault()
+    event.preventDefault();
     // alert('Welcome')
   }
   return (
@@ -85,6 +86,6 @@ const Login = (props) => {
         </form>
       </div>
     </div>
-  )
-}
-export default Login
+  );
+};
+export default Login;

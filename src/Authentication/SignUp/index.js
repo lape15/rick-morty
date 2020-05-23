@@ -4,7 +4,7 @@ import './signin.css';
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 const SignUp = () => {
   const [signUp, setsignUp] = useState({
-    name: '',
+    displayName: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -33,7 +33,7 @@ const SignUp = () => {
   const validity = () => {
     let valid = true;
 
-    valid = signUp.name.trim() !== '' && valid;
+    valid = signUp.displayName.trim() !== '' && valid;
     valid = signUp.email.trim() !== '' && valid;
     valid = signUp.password.trim() !== '' && valid;
     valid = signUp.confirmPassword.trim() !== '' && valid;
@@ -48,7 +48,9 @@ const SignUp = () => {
         signUp.email,
         signUp.password
       );
-      await createUserProfileDocument(user, signUp.displayName);
+      await createUserProfileDocument(user, {
+        displayName: signUp.displayName,
+      });
       setsignUp({
         name: '',
         email: '',
@@ -84,8 +86,8 @@ const SignUp = () => {
           <input
             type="text"
             placeholder="Display name"
-            name="name"
-            value={signUp.name}
+            name="displayName"
+            value={signUp.displayName}
             className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-3/4 appearance-none leading-normal ml-8 lg:ml-0"
             onChange={handleChange}
           />
