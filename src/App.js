@@ -4,23 +4,25 @@ import '../src/styles/app.css';
 import Header from './Components/Header';
 import Routes from './Routes';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+import UserContextProvider from './context';
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
   let unSubscribeFromAuth = null;
   useEffect(() => {
     auth.onAuthStateChanged(async (userAuth) => {
+      // console.log(userAuth);
       if (userAuth) {
-        const userRef = createUserProfileDocument(userAuth);
-        (await userRef).onSnapshot((snapShot) => {
+        const userRef = await createUserProfileDocument(userAuth);
+        userRef.onSnapshot((snapShot) => {
           setCurrentUser({
             id: snapShot.id,
             ...snapShot.data(),
           });
-          // console.log(currentUser);
         });
       }
       // console.log(userAuth);
       setCurrentUser(userAuth);
+      // console.log(currentUser);
     });
   }, [currentUser]);
 
@@ -31,8 +33,10 @@ const App = () => {
   }, []);
   return (
     <div className="App">
-      <Header user={currentUser} />
-      <Routes />
+      <UserContextProvider>
+        <Header user={currentUser} />
+        <Routes />
+      </UserContextProvider>
     </div>
   );
 };

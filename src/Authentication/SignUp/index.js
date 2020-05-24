@@ -28,7 +28,7 @@ const SignUp = () => {
       [e.target.name]: e.target.value,
       isValid: validity(),
     });
-    console.log(signUp);
+    // console.log(signUp);
   }
   const validity = () => {
     let valid = true;
@@ -126,13 +126,7 @@ const SignUp = () => {
             className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-3/4 appearance-none leading-normal ml-8 lg:ml-0"
             onChange={handleChange}
           />
-          <div className="mt-3">
-            <button
-              className="text-black p-2 border rounded-lg m-4 w-auto btn outline-none"
-              // disabled={!signUp.isValid}
-            >
-              Signup with Google
-            </button>
+          <div className="mt-3 text-center">
             <button
               className="text-black p-2 border rounded-lg m-4 w-32 btn outline-none"
               disabled={!signUp.isValid}

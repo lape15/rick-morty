@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Text from '../images/text.png';
 import { NavLink } from 'react-router-dom';
 import { auth } from '../firebase/firebase.utils';
+import { UserContext } from '../context';
 const Header = (props) => {
-  // console.log(props.user);
+  const user = useContext(UserContext);
+  // console.log(user);
   return (
     <header className="bg-transparent">
       <div className="container mx-auto px-6 py-2 flex justify-between items-center">
@@ -20,9 +22,12 @@ const Header = (props) => {
             <li className="m-2 p-2 text-green-900 cursor-pointer">
               <NavLink to={'/'}>About</NavLink>
             </li>
-            <li className="m-2 p-2 text-green-900 cursor-pointer">
-              <NavLink to={'/auth/signup'}>Register</NavLink>
-            </li>
+            {!props.user ? (
+              <li className="m-2 p-2 text-green-900 cursor-pointer">
+                <NavLink to={'/auth/signup'}>Register</NavLink>
+              </li>
+            ) : null}
+
             {props.user ? (
               <li
                 className="m-2 p-2 text-green-900 cursor-pointer"

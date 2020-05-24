@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import Ricky from '../../images/running.png';
 import '../SignUp/signin.css';
-import { signInWithGoogle } from '../../firebase/firebase.utils';
-import { Redirect } from 'react-router-dom';
+import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
+import { withRouter, Redirect } from 'react-router-dom';
 const Login = (props) => {
-  console.log(props);
+  // console.log(props);
   const [login, setLogin] = useState({
     email: '',
     password: '',
     isValid: false,
   });
-
+  const [authError, setAuthError] = useState(false);
+  let userAuthDetails = false;
   function handleChange(e) {
     setLogin({
       ...login,
@@ -27,10 +28,24 @@ const Login = (props) => {
 
     return valid;
   };
-  function handleSubmit(event) {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // alert('Welcome')
-  }
+    const { email, password } = login;
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      return <Redirect to="/characters" />;
+      // setLogin({
+      //   email: '',
+      //   password: '',
+      // });
+    } catch (error) {
+      console.error(error.code, error);
+      if (!error.a) {
+        setAuthError(true);
+      }
+    }
+  };
+  // console.log(authError);
   return (
     <div className="lg:flex block pt-6 bg-white shadow-lg lg:w-screen  max-w-3xl m-auto text-black ">
       <div className="lg:flex-initial text-center">
@@ -44,6 +59,12 @@ const Login = (props) => {
           <h1 className="lg:mt-3 -mt-2 lg:text-3xl text-xl font-bold text-gray-600">
             Login
           </h1>
+
+          {authError ? (
+            <div className="text-red-400 text-center lg:text-left text-3xl">
+              User is not authorized
+            </div>
+          ) : null}
           <span className="text-gray-500 text-xl">Enter your details</span>
 
           <label className="block mt-2 mb-2 mr-2 text-gray-700 p-3">
@@ -61,7 +82,7 @@ const Login = (props) => {
             Password
           </label>
           <input
-            type="text"
+            type="password"
             placeholder="Password"
             name="password"
             value={login.password}
@@ -73,14 +94,15 @@ const Login = (props) => {
             <button
               className="text-black p-2 border rounded-lg m-4 w-auto btn outline-none"
               onClick={signInWithGoogle}
+              type="button"
             >
-              Login with Google
+              Signin with Google
             </button>
             <button
               className="text-black p-2 border rounded-lg m-4 w-32 btn outline-none"
               disabled={!login.isValid}
             >
-              Login
+              Signin
             </button>
           </div>
         </form>
@@ -88,4 +110,4 @@ const Login = (props) => {
     </div>
   );
 };
-export default Login;
+export default withRouter(Login);
