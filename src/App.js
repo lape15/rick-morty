@@ -20,17 +20,14 @@ const App = () => {
           });
         });
       }
-      // console.log(userAuth);
       setCurrentUser(userAuth);
-      // console.log(currentUser);
+      return () => {
+        unSubscribeFromAuth();
+        console.log('I am unsubscribing');
+      };
     });
-  }, [currentUser]);
-
-  useEffect(() => {
-    return () => {
-      unSubscribeFromAuth();
-    };
   }, []);
+
   return (
     <div className="App">
       <UserContextProvider>
