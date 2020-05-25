@@ -39,7 +39,6 @@ const SignUp = () => {
     valid = signUp.confirmPassword.trim() !== '' && valid;
     return valid;
   };
-  const { displayName } = signUp;
   const handleSubmit = async (event) => {
     event.preventDefault();
     const realValid = checkValidity();
@@ -49,12 +48,11 @@ const SignUp = () => {
         signUp.email,
         signUp.password
       );
-      console.log(user);
       await createUserProfileDocument(user, {
-        displayName,
+        displayName: signUp.displayName,
       });
       setsignUp({
-        displayName: '',
+        name: '',
         email: '',
         password: '',
         confirmPassword: '',

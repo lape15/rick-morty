@@ -3,9 +3,17 @@ import Text from '../images/text.png';
 import { NavLink } from 'react-router-dom';
 import { auth } from '../firebase/firebase.utils';
 import { UserContext } from '../context';
+import app from '../firebase/firebase.utils';
 const Header = (props) => {
   const user = useContext(UserContext);
-  // console.log(user);
+  let profile = {};
+
+  if (user) {
+    profile = user;
+  } else {
+    console.log('What is this');
+  }
+
   return (
     <header className="bg-transparent">
       <div className="container mx-auto px-6 py-2 flex justify-between items-center">
@@ -22,13 +30,13 @@ const Header = (props) => {
             <li className="m-2 p-2 text-green-900 cursor-pointer">
               <NavLink to={'/'}>About</NavLink>
             </li>
-            {!props.user ? (
+            {!user ? (
               <li className="m-2 p-2 text-green-900 cursor-pointer">
                 <NavLink to={'/auth/signup'}>Register</NavLink>
               </li>
             ) : null}
 
-            {props.user ? (
+            {user ? (
               <li
                 className="m-2 p-2 text-green-900 cursor-pointer"
                 onClick={() => {
@@ -37,11 +45,11 @@ const Header = (props) => {
               >
                 SignOut
               </li>
-            ) : props.user === null ? (
+            ) : (
               <li className="m-2 p-2 text-green-900 cursor-pointer">
                 <NavLink to={'/auth'}>Login</NavLink>
               </li>
-            ) : null}
+            )}
           </ul>
         </div>
         <NavLink
