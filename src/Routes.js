@@ -1,7 +1,9 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { UserContext } from './context';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import Dashboard from './Components/Dashboard';
 import Home from './Home';
-import Characters from './Components/Characters';
+
 import Authentication from './Authentication/index';
 
 const Routes = () => {
@@ -11,7 +13,7 @@ const Routes = () => {
         <Route path="/(|home)/" exact component={Home} />
         <Route path="/auth" component={Authentication} />
 
-        <Route path="/characters" exact component={Characters} />
+        <Route path="/dashboard" component={Dashboard} />
       </Switch>
     </div>
   );

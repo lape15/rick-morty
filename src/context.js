@@ -25,6 +25,8 @@ const UserContextProvider = (props) => {
       };
     });
   }, []);
+
+  localStorage.setItem('userProfile', JSON.stringify(user));
   return (
     <UserContext.Provider value={user}>{props.children}</UserContext.Provider>
   );

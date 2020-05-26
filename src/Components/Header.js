@@ -13,7 +13,7 @@ const Header = (props) => {
   } else {
     console.log('What is this');
   }
-
+  // console.log(profile);
   return (
     <header className="bg-transparent">
       <div className="container mx-auto px-6 py-2 flex justify-between items-center">

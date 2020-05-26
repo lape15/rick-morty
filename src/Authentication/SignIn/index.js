@@ -32,10 +32,10 @@ const Login = (props) => {
     event.preventDefault();
     const { email, password } = login;
     try {
-      const waiting = await auth.signInWithEmailAndPassword(email, password);
-      console.log(waiting);
-      console.log('Done');
-      props.history.push('/characters');
+      await auth.signInWithEmailAndPassword(email, password);
+      // console.log(waiting);
+
+      // return <Redirect to="/dashboard/characters" />;
       // setLogin({
       //   email: '',
       //   password: '',
@@ -47,7 +47,10 @@ const Login = (props) => {
       }
     }
   };
-  // console.log(authError);
+  // const handleGoogleSignIn = () => {
+  //   signInWithGoogle();
+  //   props.history.push('/characters');
+  // };
   return (
     <div className="lg:flex block pt-6 bg-white shadow-lg lg:w-screen  max-w-3xl m-auto text-black ">
       <div className="lg:flex-initial text-center">
