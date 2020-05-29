@@ -1,9 +1,31 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect, createContext, useReducer } from 'react';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 export const UserContext = createContext();
 
+// const INITIAL_STATE = {
+//     user: null
+// }
+
+// const reducer = (state,action) => {
+//     switch(action.type){
+//         case 'SET_USER':
+//             return {
+//                 ...state,
+//                 user :action.payload
+//             }
+//             default:
+//       return state;
+//     }
+// }
+// const setUser = user => ({
+//     type:'SET_USER',
+//     payload: user
+// })
+
 const UserContextProvider = (props) => {
   const [user, setUser] = useState(null);
+  //   const[state,dispatch] = useReducer(reducer,INITIAL_STATE)
+  //   const {state}
 
   useEffect(() => {
     var unSubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
