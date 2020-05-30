@@ -4,6 +4,7 @@ export const UserContext = createContext();
 
 const UserContextProvider = (props) => {
   const [user, setUser] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     var unSubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
