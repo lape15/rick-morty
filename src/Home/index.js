@@ -1,7 +1,7 @@
-import React from 'react'
-import Section from './Section'
-import World from '../images/White.gif'
-import About from './About'
+import React from 'react';
+import Section from './Section';
+import World from '../images/White.gif';
+import About from './About';
 const Home = () => {
   return (
     <div
@@ -14,7 +14,7 @@ const Home = () => {
       <Section />
       <About />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

@@ -23,7 +23,43 @@
   border: 1px solid #29822b;
   animation: btn 4s 3s forwards;
   outline: 0;
+  align-self: start;
+  transition: all 3s ease-in-out;
 }
+.box .btn-box .btns:hover {
+  background-color: #2f9331;
+  color: #fff;
+}
+.box {
+  height: 480px;
+  width: 250px;
+  margin: 0 auto;
+  background-color: #fff;
+  animation-name: stretch;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: initial;
+  animation-fill-mode: none;
+  animation-play-state: running;
+}
+
+@keyframes stretch {
+  0% {
+    transform: scale(0.3);
+    background-color: #bdd6bd;
+    border-radius: 100%;
+  }
+  50% {
+    background-color: #d4ffc3;
+  }
+  100% {
+    transform: scale(1.1);
+    /* background-color: #2f9331; */
+  }
+}
+
 @keyframes myBox {
   0% {
     /* border: 2px solid red; */

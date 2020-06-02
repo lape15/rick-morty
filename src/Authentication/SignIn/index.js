@@ -3,6 +3,7 @@ import Ricky from '../../images/running.png';
 import '../SignUp/signin.css';
 import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
 import { withRouter, Redirect } from 'react-router-dom';
+import Loader from './../../Components/Loader';
 const Login = (props) => {
   // console.log(props);
   const [login, setLogin] = useState({
@@ -10,6 +11,7 @@ const Login = (props) => {
     password: '',
     isValid: false,
   });
+  let isPageLoading = false;
   const [authError, setAuthError] = useState(false);
   let userAuthDetails = false;
   function handleChange(e) {
@@ -31,8 +33,10 @@ const Login = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const { email, password } = login;
+    isPageLoading = true;
     try {
       await auth.signInWithEmailAndPassword(email, password);
+
       // console.log(waiting);
 
       // return <Redirect to="/dashboard/characters" />;
@@ -47,10 +51,7 @@ const Login = (props) => {
       }
     }
   };
-  // const handleGoogleSignIn = () => {
-  //   signInWithGoogle();
-  //   props.history.push('/characters');
-  // };
+  console.log(isPageLoading);
   return (
     <div className="lg:flex block pt-6 bg-white shadow-lg lg:w-screen  max-w-3xl m-auto text-black ">
       <div className="lg:flex-initial text-center">
@@ -112,6 +113,7 @@ const Login = (props) => {
           </div>
         </form>
       </div>
+      {isPageLoading ? <Loader /> : null}
     </div>
   );
 };

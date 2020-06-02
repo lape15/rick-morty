@@ -1,6 +1,6 @@
-import React from 'react'
-import Rick from '../images/Rick.png'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import Rick from '../images/Rick.png';
+import { Link } from 'react-router-dom';
 const Section = () => {
   return (
     <div className="lg:p-3 p-1">
@@ -23,7 +23,7 @@ const Section = () => {
             adventures.
           </span>
           <div className="btn-box mt-6 ">
-            <button className="text-green-900 btns mt-16 opacity-0 p-4 font-bold tracking-wide rounded-full outline-none ">
+            <button className="text-green-900 btns mt-16 opacity-0 p-4 font-bold tracking-wide rounded-full outline-none">
               <Link to="/signup"> Explore our world </Link>
             </button>
           </div>
@@ -37,6 +37,6 @@ const Section = () => {
         </div>
       </div>
     </div>
-  )
-}
-export default Section
+  );
+};
+export default Section;

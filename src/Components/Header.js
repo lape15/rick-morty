@@ -10,6 +10,7 @@ const Header = (props) => {
 
   if (user) {
     profile = user;
+    console.log(user);
   } else {
     console.log('What is this');
   }

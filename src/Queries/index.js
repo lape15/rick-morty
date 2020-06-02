@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 const ALL_CHARACTERS = gql`
   {
-    characters {
+    characters(page: 1) {
       results {
         id
         name
